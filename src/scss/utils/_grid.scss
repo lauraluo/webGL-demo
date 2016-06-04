@@ -1,0 +1,32 @@
+$grid-width:  8.33333333%;
+@function grid-width($n) {
+     @return $n * $grid-width;
+}
+
+
+@mixin grid($n){
+    display: block;
+    float: left;        
+    width:grid-width($n); 
+    box-sizing:border-box;
+    padding:10px;
+}
+
+$i: 12;
+@while $i > 0 {
+    .l-grid#{$i} {
+        display: block;
+        float: left;        
+        width:grid-width($i); 
+        box-sizing:border-box;
+        padding:10px;
+    }
+    $i: $i - 1;
+}
+
+.l-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
