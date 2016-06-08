@@ -10,20 +10,20 @@ html
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='edge,chrome=1')
         title #{page.title}
-        meta(name='description', content='')
+        meta(name='description', content='#{page.desc}')
         meta(name='viewport', content='width=640')
 
         // Schema.org markup for Google+
-        meta(itemprop="name" content="")
-        meta(itemprop="description" content="")
-        meta(itemprop="image" content="WebGL 範例")
+        meta(itemprop="name" content="#{page.title}")
+        meta(itemprop="description" content="#{page.desc}")
+        meta(itemprop="image" content="#{page.image}")
 
         // og
-        meta(property="og:title" content="WebGL 範例")
-        meta(property="og:description" content="desc")
-        meta(property="og:site_name" content="WebGL 範例")
+        meta(property="og:title" content="#{page.title}")
+        meta(property="og:description" content="#{page.desc}")
+        meta(property="og:site_name" content="一起來玩WebGL")
         meta(property="og:type" content="article")
-        meta(property="og:image" content="http://lauraluo.github.io/particleDemo/dist/images/2016-06-02_202130.jpg")
+        meta(property="og:image" content="#{page.image}")
 
         //- TODO : Place favicon.ico and apple-touch-icon.png in the root directory
         //- link(rel="Shortcut Icon" type="images/x-icon" href="../images/fav.ico")
