@@ -1,13 +1,12 @@
 extends _layout.jade
 block pageinfo
-    - var page = { title: '聲音視覺化',desc:'玩玩傅利葉轉換',image:'http://lauraluo.github.io/webGlDemo/dist/images/audio.png' }
+    - var page = { title: 'webGL:聲音視覺化',desc:'玩玩傅利葉轉換+three.js',image:'http://lauraluo.github.io/webGlDemo/dist/images/audio.png' }
 
 block page_main
-	section#audio
-
-	script(src='js/libs/dat.gui.min.js')
-	script(src="http://cdn.tonejs.org/latest/Tone.js")
-	script(src="js/3daudio.js")
+    section#audio
+    script(src='js/libs/dat.gui.min.js')
+    script(src="http://cdn.tonejs.org/latest/Tone.js")
+    script(src="js/3daudio.js")
 
 
 
