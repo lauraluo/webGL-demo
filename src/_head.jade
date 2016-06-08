@@ -1,11 +1,15 @@
 doctype
 //- TODO: Don't forget to set lang !!
+
+block pageinfo
+    - var page = { title: '一起來玩WebGL',desc:'一直玩一直玩一直玩',image:'http://lauraluo.github.io/particleDemo/dist/images/2016-06-02_202130.jpg' }
+
 html
     head    
         //- TODO: Check if it's the good charset
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='edge,chrome=1')
-        title 一起來玩WebGL
+        title #{page.title}
         meta(name='description', content='')
         meta(name='viewport', content='width=640')
 
