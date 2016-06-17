@@ -13,13 +13,13 @@
 
 [DEMO](http://lauraluo.github.io/webGlDemo/dist/)
 
-![圖](http://lauraluo.github.io/particleDemo/dist/images/og/pr.gif)
+![圖](http://lauraluo.github.io/webGlDemo/dist/images/pr.gif)
 
 ## 3D物件導入
 
 [DEMO](http://lauraluo.github.io/webGlDemo/dist/import)
 
-![圖](http://lauraluo.github.io/particleDemo/dist/images/og/import.gif)
+![圖](http://lauraluo.github.io/webGlDemo/dist/images/import.gif)
 
 ## MMD導入
 
