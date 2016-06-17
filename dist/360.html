@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Article" ng-app="markup" debug="false"><!DOCTYPE html>
+  <html>
+    <head>   
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="edge,chrome=1">
+      <title>一起來玩WebGL</title>
+      <meta name="description" content="一直玩一直玩一直玩">
+      <meta name="viewport" content="width=640">
+      <!-- Schema.org markup for Google+-->
+      <meta itemprop="name" content="一起來玩WebGL">
+      <meta itemprop="description" content="一直玩一直玩一直玩">
+      <meta itemprop="image" content="http://lauraluo.github.io/particleDemo/dist/images/2016-06-02_202130.jpg">
+      <!-- og-->
+      <meta property="og:title" content="一起來玩WebGL">
+      <meta property="og:description" content="一直玩一直玩一直玩">
+      <meta property="og:site_name" content="一起來玩WebGL">
+      <meta property="og:type" content="article">
+      <meta property="og:image" content="http://lauraluo.github.io/particleDemo/dist/images/2016-06-02_202130.jpg">
+      <link rel="stylesheet" href="css/main.css"><!--CDN link for  TweenMax-->
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/mobile-detect/0.4.3/mobile-detect.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+      <script src="http://code.createjs.com/preloadjs-0.6.1.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5.1/dat.gui.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r77/three.js"></script>
+      <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+      <script src="js/Detector.js"></script>
+      <script src="js/chroma.min.js"></script>
+      <script src="js/math.js"></script>
+    </head>
+  </html>
+  <body>
+    <style type="text/css" media="screen">
+      canvas,video,.Valiant360_default {
+      float: left;
+      }
+    </style>
+    <section class="video360">
+      <div data-video-src="assets/ie02.mp4" style="width: 800px; height: 600px;" class="valiantPhoto"></div>
+    </section>
+    
+    <script type="text/javascript" src="js/lib/valiant.jquery/Detector.js"></script>
+    <script type="text/javascript" src="js/lib/valiant.jquery/modernizr-latest.js"></script>
+    <script type="text/javascript" src="js/lib/valiant.jquery/stats.min.js"></script>
+    <script type="text/javascript" src="js/lib/valiant.jquery/fixed_ie.js"></script>
+    <!-- Valiant360 plugin, load after jQuery and Three.js-->
+    <script type="text/javascript" src="js/lib/valiant.jquery/valiant.jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.valiantPhoto').Valiant360();
+      });
+    </script>
+    
+  </body>
+</html>

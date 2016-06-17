@@ -1,0 +1,32 @@
+extends _layout.jade
+block page_main
+    style(type='text/css', media='screen').
+      canvas,video,.Valiant360_default {
+      float: left;
+      }
+    section.video360
+        .valiantPhoto(data-video-src='assets/ie02.mp4', style='width: 800px; height: 600px;')
+        //- .valiantPhoto(data-photo-src='asset/equirectangular-bathroom-tile.jpg', style='width: 960px; height: 500px;display:none')
+    
+    //- script(src='js/libs/charsetencoder.min.js')
+    //- script(src='js/libs/ammo.js')
+    //- script(src='js/loaders/TGALoader.js')
+    //- script(src='js/loaders/MMDLoader.js')
+    //- script(src='js/animation/CCDIKSolver.js')
+    //- script(src='js/animation/MMDPhysics.js')
+    //- script(src='js/Detector.js')
+    //- script(src='js/libs/dat.gui.min.js')
+    //- script(src="js/app3.js")
+
+
+    script(type='text/javascript', src='js/lib/valiant.jquery/Detector.js')
+    script(type='text/javascript', src='js/lib/valiant.jquery/modernizr-latest.js')
+    script(type='text/javascript', src='js/lib/valiant.jquery/stats.min.js')
+    script(type='text/javascript', src='js/lib/valiant.jquery/fixed_ie.js')
+    
+    // Valiant360 plugin, load after jQuery and Three.js
+    script(type='text/javascript', src='js/lib/valiant.jquery/valiant.jquery.js')
+    script(type='text/javascript').
+      $(document).ready(function() {
+        $('.valiantPhoto').Valiant360();
+      });

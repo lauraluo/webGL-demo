@@ -1,5 +1,8 @@
 extends _layout.jade
 
+block pageinfo
+    - var page = { title: 'webGL:3D物件導入',desc:'感謝Mickey Chen提供的物件',image:'http://lauraluo.github.io/webGlDemo/dist/images/import.gif' };
+
 block page_main
     section.index
     script(type='text/javascript' src="js/app2.js")
