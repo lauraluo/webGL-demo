@@ -1,8 +1,10 @@
 
 # 內容
 
+一些素材來源待補
+
 ## 聲音API
-[DEMO](http://lauraluo.github.io/webGlDemo/dist/)
+[DEMO](http://lauraluo.github.io/webGlDemo/dist/audio.html)
 ![圖](http://lauraluo.github.io/webGlDemo/dist/images/audio.gif)
 
 ## 圖片轉粒子
@@ -20,7 +22,7 @@
 ## 360影片forIE11-使用valiant.jquery
 [DEMO](http://lauraluo.github.io/webGlDemo/dist/360)
 ![圖](http://lauraluo.github.io/webGlDemo/dist/images/360.gif)
-
+<!-- 
 
 # 開發環境
 
@@ -55,4 +57,4 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 ### gulp-connect 
 
 簡易伺服器
-https://www.npmjs.com/package/gulp-connect
+https://www.npmjs.com/package/gulp-connect -->
