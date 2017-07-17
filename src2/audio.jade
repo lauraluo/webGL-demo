@@ -1,0 +1,12 @@
+extends _layout.jade
+block pageinfo
+    - var page = { title: 'webGL:聲音視覺化',desc:'玩玩傅利葉轉換+three.js',image:'http://lauraluo.github.io/webGlDemo/dist/images/audio.gif' }
+
+block page_main
+    section#audio
+    script(src='js/libs/dat.gui.min.js')
+    script(src="https://tonejs.github.io/CDN/latest/Tone.js")
+    script(src="js/3daudio.js")
+
+
+

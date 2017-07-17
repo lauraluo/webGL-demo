@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function AttachedToMock(WrappedComponent, refluxObject, refluxAction, config) {
     class MockComponent extends React.Component {
@@ -8,10 +8,12 @@ function AttachedToMock(WrappedComponent, refluxObject, refluxAction, config) {
         render() {
             return (
                 <WrappedComponent
-                    ref={()=>{refluxObject[refluxAction](config)}} 
+                    ref={() => {
+                        refluxObject[refluxAction](config);
+                    }}
                     {...this.props}
                 />
-            )
+            );
         }
     }
 

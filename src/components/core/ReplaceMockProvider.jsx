@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function AttachedToMock(WrappedComponent, configs) {
     class MockComponent extends React.Component {
@@ -7,7 +7,7 @@ function AttachedToMock(WrappedComponent, configs) {
         }
 
         render() {
-            return <WrappedComponent  {...this.props}/>
+            return <WrappedComponent {...this.props} />;
         }
     }
 

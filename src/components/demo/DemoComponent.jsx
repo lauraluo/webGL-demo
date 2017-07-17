@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 //引用node module裡的react，並使用變數"React"代表
 
 class DemoComponent extends Component {
