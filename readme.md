@@ -11,7 +11,7 @@
 
 ## 圖片轉粒子
 
-[DEMO](http://lauraluo.github.io/webGL-demo/)
+[DEMO](http://lauraluo.github.io/webGL-demo/particle.html)
 
 ![圖](http://lauraluo.github.io/webGL-demo/images/pr.gif?v=2)
 
