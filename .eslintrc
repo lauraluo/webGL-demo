@@ -12,6 +12,9 @@
     },
     "globals": {
         "React": true,
+        "dat": true,
+        "math": true,
+        "THREE": true,
         "console": true
     },
     "plugins": ["react", "class-property"],

@@ -1,21 +1,5 @@
 import Tone from 'Tone';
-import {
-    Scene,
-    PerspectiveCamera,
-    WebGLRenderer,
-    BoxGeometry,
-    AxisHelper,
-    FaceColors,
-    Matrix4,
-    FogExp2,
-    DirectionalLight,
-    PlaneGeometry,
-    MeshLambertMaterial,
-    MeshBasicMaterial,
-    Mesh
-} from 'three';
 
-import OrbitControls from 'orbit-controls';
 
 var scene;
 var camera;
@@ -46,29 +30,29 @@ var gridSizeX = 240;
 var gridSizeY = 240;
 
 function init() {
-    scene = new Scene();
-    camera = new PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 8000);
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 8000);
 
-    renderer = new WebGLRenderer({
+    renderer = new THREE.WebGLRenderer({
         alpha: true
     });
     renderer.setClearColor(background, 1);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    geometry = new PlaneGeometry(
+    geometry = new THREE.PlaneGeometry(
         window.innerWidth / 2,
         window.innerHeight / 2,
         gridSizeX - 1,
         gridSizeY - 1
     );
-    material = new MeshLambertMaterial({
+    material = new THREE.MeshLambertMaterial({
         color: '#ff6670',
         emissive: '#ff6670',
         wireframe: true,
-        vertexColors: FaceColors,
+        vertexColors: THREE.FaceColors,
         wireframeLinewidth: 2
     });
-    geometry.applyMatrix(new Matrix4().makeRotationX(-Math.PI / 2));
+    geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
 
     var inc = 0;
     data = [];
@@ -84,7 +68,7 @@ function init() {
         }
     }
 
-    terrain = new Mesh(geometry, material);
+    terrain = new THREE.Mesh(geometry, material);
     terrain.position.z = -580;
     terrain.position.x = 0;
     terrain.position.y = 100;
@@ -92,10 +76,10 @@ function init() {
     terrain.rotation.x = -0.97 * Math.PI;
     terrain.rotation.z = -0.01 * Math.PI;
     scene.add(terrain);
-    scene.fog = new FogExp2('#91dcad', 0.002);
+    scene.fog = new THREE.FogExp2('#91dcad', 0.002);
     
 
-    var directionalLight = new DirectionalLight(background);
+    var directionalLight = new THREE.DirectionalLight(background);
     directionalLight.position.set(100, 1, -21000).normalize();
     scene.add(directionalLight);
 
@@ -106,7 +90,7 @@ function init() {
 
     camera.lookAt(scene.position);
 
-    document.getElementById('index').appendChild(renderer.domElement);
+    document.getElementById('audio').appendChild(renderer.domElement);
 
     renderView();
 }
