@@ -10,7 +10,7 @@ var worldWidth, worldHeight, gridSize;
 var myCanvas_W;
 var myCanvas_H;
 var controls;
-var background = '#91dcad';
+var background = '#000';
 var surface = '#fffbbf';
 worldWidth = window.innerWidth;
 
@@ -26,8 +26,8 @@ var player = new Tone.Player({
     .fan(fft, waveform)
     .toMaster();
 
-var gridSizeX = 240;
-var gridSizeY = 240;
+var gridSizeX = 200;
+var gridSizeY = 200;
 
 function init() {
     scene = new THREE.Scene();
@@ -46,8 +46,8 @@ function init() {
         gridSizeY - 1
     );
     material = new THREE.MeshLambertMaterial({
-        color: '#ff6670',
-        emissive: '#ff6670',
+        color: '#fff',
+        emissive: '#fff',
         wireframe: true,
         vertexColors: THREE.FaceColors,
         wireframeLinewidth: 2
@@ -56,7 +56,7 @@ function init() {
 
     var inc = 0;
     data = [];
-    var highestPoint = 0;
+    var highestPoint = 50;
 
     for (var x = 0; x < gridSizeX; x++) {
         data.push([]);
@@ -71,12 +71,12 @@ function init() {
     terrain = new THREE.Mesh(geometry, material);
     terrain.position.z = -580;
     terrain.position.x = 0;
-    terrain.position.y = 100;
+    terrain.position.y = 90;
     terrain.rotation.y = -1.5 * Math.PI;
     terrain.rotation.x = -0.97 * Math.PI;
-    terrain.rotation.z = -0.01 * Math.PI;
+    terrain.rotation.z = 0.03 * Math.PI;
     scene.add(terrain);
-    scene.fog = new THREE.FogExp2('#91dcad', 0.002);
+    scene.fog = new THREE.FogExp2('#000', 0.002);
     
 
     var directionalLight = new THREE.DirectionalLight(background);
@@ -96,9 +96,7 @@ function init() {
 }
 
 function updateTerrain(values) {
-    var len = values.length;
     var inc = 0;
-    var ratio = 4;
 
     for (var x = 0; x < gridSizeX; x++) {
         for (var y = gridSizeY; y > 0; y--) {

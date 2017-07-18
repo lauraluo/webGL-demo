@@ -1,1 +1,250 @@
-/* publish time Tuesday, July 18th, 2017, 6:56:23 PM*/!function e(t,r,n){function o(i,c){if(!r[i]){if(!t[i]){var d="function"==typeof require&&require;if(!c&&d)return d(i,!0);if(a)return a(i,!0);var s=new Error("Cannot find module '"+i+"'");throw s.code="MODULE_NOT_FOUND",s}var l=r[i]={exports:{}};t[i][0].call(l.exports,function(e){var r=t[i][1][e];return o(r||e)},l,l.exports,e,t,r,n)}return r[i].exports}for(var a="function"==typeof require&&require,i=0;i<n.length;i++)o(n[i]);return o}({1:[function(e,t,r){"use strict";function n(){l=new THREE.Scene,u=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,.1,1e4),s=new THREE.WebGLRenderer,s.setClearColor(0,1),s.setSize(window.innerWidth,window.innerHeight);var e=new THREE.DirectionalLight;e.position.set(1200,1200,1200),l.add(e),u.position.x=0,u.position.y=0,u.position.z=1e3,u.lookAt(l.position),document.body.appendChild(s.domElement),v=new THREE.OrbitControls(u),f=new function(){this.explode=function(){m=!0},this.implode=function(){m=!1},this.scale=.1},c(f),o()}function o(){var e=document.createElement("canvas");e.width=512,e.height=512;var t=e.getContext("2d"),r=new Image;r.src="images/demo2.png",r.onload=function(){t.drawImage(r,0,0);var e=t.getImageData(0,0,512,512),n=math.multiply(math.ones(512,512),"");E=new THREE.Geometry;for(var o=0;o<512;o++)for(var i=0;i<512;i++){n._data[i][o]="rgb("+[e.data[4*o+512*i*4],e.data[4*o+1+512*i*4],e.data[4*o+2+512*i*4]].join(",")+")";var c=e.data[4*i+512*o*4]/2,d=new THREE.Vector3(1*o,c,1*i);E.vertices.push(d)}math.forEach(n,function(e){h.push(new THREE.Color(e))}),E.colors=h,E.applyMatrix((new THREE.Matrix4).makeRotationX(Math.PI/2)),E.applyMatrix((new THREE.Matrix4).makeRotationZ(-Math.PI/2));for(var s=0;s<511;s++)for(var l=0;l<511;l++){var u=l+512*s,f=l+1+512*s,v=l+512*(s+1),p=l+1+512*(s+1),w=new THREE.Face3(u,f,p),m=new THREE.Face3(p,v,u);E.faces.push(w),E.faces.push(m)}E.computeVertexNormals(),E.computeFaceNormals(),E.computeBoundingBox(),a(E)}}function a(e){e.vertices.forEach(function(e){e.velocity=Math.random()});var t=(new THREE.TextureLoader,new THREE.PointsMaterial);t.vertexColors=THREE.VertexColors;var r=new THREE.Points(e,t);r.sortParticles=!0,r.translateX(206),r.translateY(206),l.add(r);for(var n=0;n<e.vertices.length;n++)p.push(new THREE.Vector3(0,0,0)),w.push(0);e.faces.forEach(function(e){var t=e.vertexNormals[0],r=e.vertexNormals[1],n=e.vertexNormals[2];w[e.a]+=1,w[e.b]+=1,w[e.c]+=1,p[e.a].add(t),p[e.b].add(r),p[e.c].add(n)});for(var o=0;o<p.length;o++)p[o].divideScalar(w[o]);d()}function i(e){var t=!0===e?-1:1,r=0;E.vertices.forEach(function(e){e.x+=p[r].x*e.velocity*f.scale*t,e.y+=p[r].y*e.velocity*f.scale*t,e.z+=p[r].z*e.velocity*f.scale*t,r++}),E.verticesNeedUpdate=!0}function c(e){var t=new dat.GUI;t.add(e,"explode"),t.add(e,"implode"),t.add(e,"scale",0,2).step(.01)}function d(){s.render(l,u),v.update(),i(m?!0:!1),requestAnimationFrame(d)}var s,l,u,E,f,v,p=[],w=[],h=[],m=!1;window.onload=n},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+// global variables
+var renderer;
+var scene;
+var camera;
+var geom;
+var control;
+var avgVertexNormals = [];
+var avgVertexCount = [];
+var colors = [];
+var doExplode = false;
+var orbit;
+
+function init() {
+
+    // create a scene, that will hold all our elements such as objects, cameras and lights.
+    scene = new THREE.Scene();
+
+    // create a camera, which defines where we're looking at.
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
+
+    // create a render, sets the background color and the size
+    renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor(0x000000, 1.0);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // add light
+    var light = new THREE.DirectionalLight();
+    light.position.set(1200, 1200, 1200);
+    scene.add(light);
+
+    // position and point the camera to the center of the scene
+    // 不知為何光不見了就看不到
+    camera.position.x = 0;
+    camera.position.y = 0;
+    camera.position.z = 1000;
+    camera.lookAt(scene.position);
+
+    // add the output of the renderer to the html element
+    document.body.appendChild(renderer.domElement);
+
+    orbit = new THREE.OrbitControls(camera);
+    control = new function () {
+        this.explode = function () {
+            doExplode = true;
+        };
+        this.implode = function () {
+            doExplode = false;
+        };
+        this.scale = 0.1;
+    }();
+    addControls(control);
+
+    createGeometryFromMap();
+}
+
+function createGeometryFromMap() {
+    var depth = 512;
+    var width = 512;
+
+    var spacingX = 1;
+    var spacingZ = 1;
+    var heightOffset = 2;
+
+    var canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 512;
+    var ctx = canvas.getContext('2d');
+
+    var img = new Image();
+    img.src = "images/demo2.png";
+    img.onload = function () {
+        // draw on canvas
+        ctx.drawImage(img, 0, 0);
+        var pixel = ctx.getImageData(0, 0, width, depth);
+        // console.log(pixel.data.length );//1048576
+        //data長度為 128 取RGBA陣列中的A data長度為 512*512*4 其中的4代表每px的rgba
+        var matColors = math.multiply(math.ones(512, 512), '');
+
+        geom = new THREE.Geometry();
+
+        var output = [];
+        for (var x = 0; x < depth; x++) {
+
+            for (var z = 0; z < width; z++) {
+                matColors._data[z][x] = 'rgb(' + [pixel.data[x * 4 + z * depth * 4], pixel.data[x * 4 + 1 + z * depth * 4], pixel.data[x * 4 + 2 + z * depth * 4]].join(',') + ')';
+
+                // colors.push(new THREE.Color('rgba(255,255,255)'));
+                // get pixel
+                // since we're grayscale, we only need one element
+                //每張圖取出來的px資料，是代表rgba的256色陣列
+                //*4，跳四格取第4個a的透明度作為高度(y軸)參考
+                //* spacing 放大比例尺也許是比較好看？
+                var yValue = pixel.data[z * 4 + depth * x * 4] / heightOffset;
+                var vertex = new THREE.Vector3(x * spacingX, yValue, z * spacingZ);
+                geom.vertices.push(vertex);
+            }
+        }
+
+        math.forEach(matColors, function (value) {
+            colors.push(new THREE.Color(value));
+        });
+        geom.colors = colors;
+
+        geom.applyMatrix(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+        geom.applyMatrix(new THREE.Matrix4().makeRotationZ(-Math.PI / 2));
+
+        //制作面
+        // we create a rectangle between four vertices, and we do
+        // that as two triangles.
+        for (var _z = 0; _z < depth - 1; _z++) {
+            for (var _x = 0; _x < width - 1; _x++) {
+                // we need to point to the position in the array
+                // a - - b
+                // |  x  |
+                // c - - d
+                var a = _x + _z * width;
+                var b = _x + 1 + _z * width;
+                var c = _x + (_z + 1) * width;
+                var d = _x + 1 + (_z + 1) * width;
+
+                var face1 = new THREE.Face3(a, b, d);
+                var face2 = new THREE.Face3(d, c, a);
+
+                geom.faces.push(face1);
+                geom.faces.push(face2);
+            }
+        }
+
+        geom.computeVertexNormals();
+        geom.computeFaceNormals();
+        geom.computeBoundingBox();
+
+        createParticleSystemFromGeometry(geom);
+    };
+}
+
+function getHighPoint(geometry, face) {
+    //face中有原生的3個abc屬性
+    var v1 = geometry.vertices[face.a].y;
+    var v2 = geometry.vertices[face.b].y;
+    var v3 = geometry.vertices[face.c].y;
+    // console.log(face.a);
+    return Math.max(v1, v2, v3);
+}
+
+function createParticleSystemFromGeometry(geom) {
+
+    geom.vertices.forEach(function (v) {
+        v.velocity = Math.random();
+    });
+
+    var loader = new THREE.TextureLoader();
+
+    var psMat = new THREE.PointsMaterial();
+    psMat.vertexColors = THREE.VertexColors;
+    // psMat.blending = THREE.AdditiveBlending;
+    // psMat.transparent = true;
+    // psMat.alphaTest = 0.8;
+
+    var ps = new THREE.Points(geom, psMat);
+    ps.sortParticles = true;
+    // ps.rotation.x = Math.PI / 2;
+
+    ps.translateX(206);
+    ps.translateY(206);
+    scene.add(ps);
+
+    for (var _i = 0; _i < geom.vertices.length; _i++) {
+        avgVertexNormals.push(new THREE.Vector3(0, 0, 0));
+        avgVertexCount.push(0);
+    }
+
+    // first add all the normals 
+    // 可以把每個 F 想成組合成3d物件的許多三角型
+    geom.faces.forEach(function (f) {
+
+        //取得三個頂點的法向量
+        var vA = f.vertexNormals[0];
+        var vB = f.vertexNormals[1];
+        var vC = f.vertexNormals[2];
+
+        // update the count
+        // 將index計數 例如 avgVertexCount[128] +=1  先把所有出現過的座標計數
+        // 要注意f.a f.b f.c 是 index 
+        // 其目的是用來減少頂點的座標存取的資訊，所以會有重複的座標
+        avgVertexCount[f.a] += 1;
+        avgVertexCount[f.b] += 1;
+        avgVertexCount[f.c] += 1;
+
+        // 將對應index的方向量值給加進去 作向量的加總
+        avgVertexNormals[f.a].add(vA);
+        avgVertexNormals[f.b].add(vB);
+        avgVertexNormals[f.c].add(vC);
+    });
+
+    // 算出每個向量的平均值
+    // then calculate the average
+    for (var i = 0; i < avgVertexNormals.length; i++) {
+        avgVertexNormals[i].divideScalar(avgVertexCount[i]);
+    }
+
+    // call the render function
+    render();
+}
+
+function explode(outwards) {
+
+    var dir = outwards === true ? -1 : 1;
+
+    var count = 0;
+    geom.vertices.forEach(function (v) {
+        v.x += avgVertexNormals[count].x * v.velocity * control.scale * dir;
+        v.y += avgVertexNormals[count].y * v.velocity * control.scale * dir;
+        v.z += avgVertexNormals[count].z * v.velocity * control.scale * dir;
+
+        count++;
+    });
+    geom.verticesNeedUpdate = true;
+}
+
+function addControls(controlObject) {
+    var gui = new dat.GUI();
+    gui.add(controlObject, 'explode');
+    gui.add(controlObject, 'implode');
+    gui.add(controlObject, 'scale', 0, 2).step(0.01);
+}
+
+function render() {
+    renderer.render(scene, camera);
+
+    orbit.update();
+
+    if (doExplode) {
+        explode(true);
+    } else {
+        explode(false);
+    }
+
+    requestAnimationFrame(render);
+}
+
+// calls the init function when the window is done loading.
+window.onload = init;
+
+},{}]},{},[1])
+
+//# sourceMappingURL=../js/maps/particle.bundle.js.map
