@@ -7,6 +7,7 @@
     "gulp": "gulp",
     "develop": "gulp develop",
     "deploy": "gulp deploy",
+    "publish": "git subtree push --prefix public origin gh-pages",
     "test": "jest --coverage",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook"
