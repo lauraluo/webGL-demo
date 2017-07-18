@@ -67847,9 +67847,9 @@ function init() {
 
     geometry = new _three.PlaneGeometry(window.innerWidth / 2, window.innerHeight / 2, gridSizeX - 1, gridSizeY - 1);
     material = new _three.MeshLambertMaterial({
-        color: '#91dcad',
-        emissive: '#fff',
-        wireframe: false,
+        color: '#ff6670',
+        emissive: '#ff6670',
+        wireframe: true,
         vertexColors: _three.FaceColors,
         wireframeLinewidth: 2
     });
@@ -67870,18 +67870,18 @@ function init() {
     }
 
     terrain = new _three.Mesh(geometry, material);
-    terrain.position.z = -700;
+    terrain.position.z = -580;
     terrain.position.x = 0;
     terrain.position.y = 100;
     terrain.rotation.y = -1.5 * Math.PI;
-    terrain.rotation.x = -1.2 * Math.PI;
-    terrain.rotation.z = -0.05 * Math.PI;
+    terrain.rotation.x = -0.97 * Math.PI;
+    terrain.rotation.z = -0.01 * Math.PI;
     scene.add(terrain);
-    scene.fog = new _three.FogExp2('#91dcad', 0.0025);
+    scene.fog = new _three.FogExp2('#91dcad', 0.002);
 
-    // var directionalLight = new DirectionalLight(background);
-    // directionalLight.position.set(100, 10, -100).normalize();
-    // scene.add(directionalLight);
+    var directionalLight = new _three.DirectionalLight(background);
+    directionalLight.position.set(100, 1, -21000).normalize();
+    scene.add(directionalLight);
 
     // position and point the camera to the center of the scene
     camera.position.x = 0;
