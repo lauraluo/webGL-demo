@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="js/common.bundle.js"></script>
+    <script src="libs/three.min.js"></script>
+    <script src="libs/OrbitControls.js"></script>
+    <script src="libs/datgui/dat.gui.min.js"></script>
+    <script src="libs/math.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <style type="text/css" media="screen">
+        canvas,video,.Valiant360_default {
+          float: left;
+        }
+      </style>
+      <section class="video360">
+        <div data-video-src="assets/ie02.mp4" style="width: 800px; height: 600px;" class="valiantPhoto"></div>
+      </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="libs/valiant.jquery/Detector.js"></script>
+    <script type="text/javascript" src="libs/valiant.jquery/modernizr-latest.js"></script>
+    <script type="text/javascript" src="libs/valiant.jquery/stats.min.js"></script>
+    <script type="text/javascript" src="libs/valiant.jquery/fixed_ie.js"></script>
+    <script type="text/javascript" src="libs/valiant.jquery/valiant.jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('.valiantPhoto').Valiant360();
+      });
+    </script>
+  </body>
+</html>

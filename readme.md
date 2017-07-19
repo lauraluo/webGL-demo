@@ -22,13 +22,7 @@
 ![圖](http://lauraluo.github.io/webGL-demo/images/import.gif?v=2)
 
 ## MMD導入
-
-[DEMO](http://lauraluo.github.io/webGL-demo/mmd)
-
 ![圖](http://lauraluo.github.io/webGL-demo/images/mmd.gif?v=2)
 
 ## 360影片forIE11-使用valiant.jquery
-
-[DEMO](http://lauraluo.github.io/webGL-demo/360)
-
 ![圖](http://lauraluo.github.io/webGL-demo/images/360.gif?v=2)

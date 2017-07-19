@@ -1,0 +1,27 @@
+
+extends _layout
+
+block headScripts
+
+block styles
+
+block content
+    style(type='text/css', media='screen').
+      canvas,video,.Valiant360_default {
+        float: left;
+      }
+    section.video360
+        .valiantPhoto(data-video-src='assets/ie02.mp4', style='width: 800px; height: 600px;')
+
+block scripts
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+    script(type='text/javascript', src='libs/valiant.jquery/Detector.js')
+    script(type='text/javascript', src='libs/valiant.jquery/modernizr-latest.js')
+    script(type='text/javascript', src='libs/valiant.jquery/stats.min.js')
+    script(type='text/javascript', src='libs/valiant.jquery/fixed_ie.js')
+
+    script(type='text/javascript', src='libs/valiant.jquery/valiant.jquery.js')
+    script(type='text/javascript').
+        $(document).ready(function() {
+            $('.valiantPhoto').Valiant360();
+        });

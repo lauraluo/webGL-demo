@@ -1,0 +1,47 @@
+extends _layout.jade
+
+
+block pageinfo
+    - var page = { title: 'webGL:mmd萌萌der',desc:'使用了模型者作 aokana的素材',image:'http://lauraluo.github.io/webGlDemo/dist/images/mmd.gif' };
+
+
+block page_main
+    style.
+        body {
+        font-family: Monospace;
+        background-color: #fff;
+        color: #000;
+        margin: 0px;
+        overflow: hidden;
+        }
+        #info {
+        color: #000;
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display:block;
+        }
+        #info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+    section.index
+        div#info
+            |cppyright:
+            br
+            a( href="http://threejs.org" target="_blank") three.js
+            br
+            |MMDLoader test
+            a(href='http://bowlroll.net/up/dl12878', target='_blank') Model Data
+            br
+            a(href='http://www.nicovideo.jp/watch/sm13147122', target='_blank') Dance Data
+
+    
+    script(src='js/libs/charsetencoder.min.js')
+    script(src='js/libs/ammo.js')
+    script(src='js/loaders/TGALoader.js')
+    script(src='js/loaders/MMDLoader.js')
+    script(src='js/animation/CCDIKSolver.js')
+    script(src='js/animation/MMDPhysics.js')
+    script(src='js/Detector.js')
+    script(src='js/libs/dat.gui.min.js')
+    script(src="js/app3.js")
