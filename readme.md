@@ -1,4 +1,12 @@
 
+```mermaid
+graph LR
+    start[start] --> isNew{是否為新資料};
+    isNew --> |yes| getItemTemplate;
+
+```
+
+
 # 內容
 
 一些素材來源待補
