@@ -27,12 +27,3 @@
 ## 360影片forIE11-使用valiant.jquery
 ![圖](http://lauraluo.github.io/webGL-demo/images/360.gif?v=2)
 
-```mermaid
-graph LR
-    id1[This is the text in the box]
-    id2{This is the text in the box}
-
-    id --> id2
-    id2 --> yes
-
-```
