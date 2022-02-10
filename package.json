@@ -94,7 +94,7 @@
     "mocha": "^3.2.0",
     "mockjs": "^1.0.1-beta3",
     "node-notifier": "^5.1.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "react-addons-test-utils": "^15.4.2",
     "react-addons-update": "^15.4.2",
     "react-dom": "^15.5.4",
